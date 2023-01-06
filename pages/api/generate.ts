@@ -3,9 +3,11 @@ import openai from "../../util/openai";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
+const { database , tablename , fields , query } : {database:string,tablename:string,fields:string,query:string} = req.body;
+
 const response = await openai.createCompletion({
   model: "code-davinci-002",
-  prompt: "### Postgres SQL tables, with their properties:\n#\n# Employee(id, name, department_id)\n# Department(id, name, address)\n# Salary_Payments(id, employee_id, amount, date)\n#\n### A query to list the names of the departments which employed more than 10 employees in the last 3 months\nSELECT",
+  prompt: `### ${database} SQL tables, with their properties:\n#\n# ${tablename} (${fields})\n# Department(id, name, address)\n# Salary_Payments(id, employee_id, amount, date)\n#\n### ${query} \nSELECT`,
   temperature: 0,
   max_tokens: 150,
   top_p: 1,
@@ -13,5 +15,6 @@ const response = await openai.createCompletion({
   presence_penalty: 0,
   stop: ["#", ";"],
 });
-res.status(200).json({ message: response.data.choices[0].text });
+const result = `SELECT ${response.data.choices[0].text}`;
+res.status(200).json(result);
 }
