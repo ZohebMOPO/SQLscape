@@ -2,9 +2,18 @@ import Head from "next/head";
 import { Input, Textarea, Button } from "@nextui-org/react";
 import { useState } from "react";
 import { Loading } from "@nextui-org/react";
+import SyntaxHighlighter from "react-syntax-highlighter";
+import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
+import { format } from "sql-formatter";
 
 export default function Home() {
-  const [data, setData] = useState();
+  interface Data {
+    database: string;
+    tablename: string;
+    fields: string;
+    query: string;
+  }
+  const [data, setData] = useState<string>();
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -25,7 +34,8 @@ export default function Home() {
       },
     });
     const data = await response.json();
-    setData(data);
+    const formatted = format(data);
+    setData(formatted);
     setLoading(false);
   };
   return (
@@ -47,16 +57,15 @@ export default function Home() {
           <span className="text-secondary">fields</span>{" "}
         </h1>
         <div className="float-right w-[50rem]">
-          <Textarea
-            readOnly
-            fullWidth
-            size="xl"
-            rows={27}
-            bordered
-            initialValue="Your query will appear here"
-            className="text-center"
-            value={data}
-          />
+          <SyntaxHighlighter language="sql" customStyle={{
+            borderRadius: "10px",
+            padding: "1rem",
+            height: "50rem",
+          }}
+          style={atomOneDark}
+          >
+            {data || "Your Query Will Appear here."}
+          </SyntaxHighlighter>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mt-5">Database</div>
@@ -70,13 +79,13 @@ export default function Home() {
           </select>
           <div className="w-[45rem] mt-[2rem]">
             <Input
-              label="Table Name"
+              label="Tables Name"
               fullWidth
               bordered
               name="tablename"
               size="xl"
               className="my-5  font-custom"
-              placeholder="Eg :- Student"
+              placeholder="Eg :- Comma separated fields: Employee , Department,Salary_Payments"
             />
             <Input
               label="Fields "
@@ -85,7 +94,7 @@ export default function Home() {
               name="fields"
               size="xl"
               className="my-5 font-custom"
-              placeholder="Comma separated fields: id, name, email, etc"
+              placeholder="Comma separated fields: (id, name, department_id),(id, name, address)"
             />
           </div>
           <h1 className="text-3xl font-bold mt-[4rem]  ">
@@ -111,7 +120,11 @@ export default function Home() {
               color="secondary"
               auto
             >
-               {loading ? <Loading color="currentColor" size="sm" /> : <div>Give me the query</div>  } 
+              {loading ? (
+                <Loading color="currentColor" size="sm" />
+              ) : (
+                <div>Give me the query</div>
+              )}
             </Button>
           </div>
         </form>

@@ -7,7 +7,7 @@ const { database , tablename , fields , query } : {database:string,tablename:str
 
 const response = await openai.createCompletion({
   model: "code-davinci-002",
-  prompt: `### ${database} SQL tables, with their properties:\n#\n# ${tablename} (${fields})\n# Department(id, name, address)\n# Salary_Payments(id, employee_id, amount, date)\n#\n### ${query} \nSELECT`,
+  prompt: `### ${database} SQL tables, with their properties:\n#\n# ${tablename} (${fields})\n  \n#\n### ${query} \nSELECT`,
   temperature: 0,
   max_tokens: 150,
   top_p: 1,
