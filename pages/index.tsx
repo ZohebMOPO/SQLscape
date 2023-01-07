@@ -85,7 +85,7 @@ export default function Home() {
               <button
                 type="button"
                 value="copy text"
-                className=" text-base md:text-xl cursor-pointer text-secondary mt-8 md:mt-2 rounded px-6 md:px-10 py-2 my-4 hover:bg-secondary hover:text-white border-2 border-secondary"
+                className=" text-base md:text-xl cursor-pointer z-10 text-secondary mt-8 md:mt-2 rounded px-6 md:px-10 py-2 my-4 hover:bg-secondary hover:text-white border-2 border-secondary"
                 onClick={() => {
                   copy(`${data || " "}`);
                   alert("Copied to clipboard");
@@ -99,7 +99,7 @@ export default function Home() {
               <div className="mt-5">Database</div>
               <select
                 name="database"
-                className="md:text-lg text-base resize rounded-md mt-5 mb-2 py-3 md:py-3 px-3 md:px-5 text-black bg-[#FFFFFF] border-2 hover:border-black border-[#D9D9D9]"
+                className="md:text-lg text-base resize rounded-md mt-5 mb-2 py-3 md:py-3 px-3 md:px-5 text-black bg-[#FBF1D3] border-2 hover:border-black border-[#D9D9D9]"
               >
                 <option value="Postgres">Postgres</option>
                 <option value="MySQL">MySQL</option>
