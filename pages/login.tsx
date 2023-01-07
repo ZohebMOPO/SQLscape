@@ -13,14 +13,17 @@ const Login: React.FC = () => {
     );
   }
   return (
-    <button
-      onClick={async () => {
-        await signIn("github");
-        router.push("/");
-      }}
-    >
-      Log in with Auth0
-    </button>
+    <div className="grid h-screen place-items-center">
+      <button
+        onClick={async () => {
+          await signIn("auth0");
+        }}
+        className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg focus:outline-none focus:shadow-outline"
+        type="submit"
+      >
+        Sign In with Auth0
+      </button>
+    </div>
   );
 };
 
