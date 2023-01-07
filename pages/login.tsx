@@ -7,7 +7,7 @@ const Login: React.FC = () => {
   if (session) {
     return (
       <>
-        Signed in <br />
+        Signed in! <br />
         <button onClick={() => signOut()}>Sign out</button>
       </>
     );
@@ -19,7 +19,7 @@ const Login: React.FC = () => {
         router.push("/");
       }}
     >
-      Log in with GitHub
+      Log in with Auth0
     </button>
   );
 };
