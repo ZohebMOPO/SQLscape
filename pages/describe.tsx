@@ -55,7 +55,7 @@ return (
         style={atomOneDark}
         >
           
-          {data || "Your Query Will Appear here."}
+          {data || "The Explanation will appear here."}
         </SyntaxHighlighter>
         <button
         type="button"
