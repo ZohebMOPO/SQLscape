@@ -46,7 +46,7 @@ export default function Home() {
     const response = await fetch("/api/screenshot", {
       method: "POST",
       body: JSON.stringify({
-        data: "https://sqlscape.tfss.live",
+        data: "https://sql.proooj.co/",
       }),
       headers: {
         "Content-Type": "application/json",
