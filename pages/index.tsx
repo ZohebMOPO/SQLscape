@@ -11,9 +11,13 @@ import { BsClipboard } from "react-icons/bs";
 import Link from "next/link";
 
 export default function Home() {
+  interface Screen {
+    data: string;
+  }
   const [data, setData] = useState<string>();
   const [loading, setLoading] = useState(false);
   const { user, isLoading } = useUser();
+  const [screenshot, setScreenshot] = useState<Screen>();
 
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -37,6 +41,22 @@ export default function Home() {
     setData(formatted);
     setLoading(false);
   };
+
+  const handleScreenshot = async () => {
+    const response = await fetch("/api/screenshot", {
+      method: "POST",
+      body: JSON.stringify({
+        data: "https://sqlscape.tfss.live",
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data2 = await response.json();
+    console.log(data2);
+    setScreenshot(data2);
+  };
+
   return (
     <>
       <Head>
@@ -94,6 +114,21 @@ export default function Home() {
                 {" "}
                 <BsClipboard className="inline" />
               </button>
+              {screenshot ? (
+                <Link
+                  className="bg-blue-500 text-[#FBF1D3] text-lg py-3 mx-5 rounded-md px-2"
+                  href={`${screenshot?.data}`}
+                >
+                  Download
+                </Link>
+              ) : (
+                <button
+                  className="bg-blue-500 text-[#FBF1D3] text-lg py-3 mx-5 rounded-md px-2"
+                  onClick={handleScreenshot}
+                >
+                  Screenshot
+                </button>
+              )}
             </div>
             <form onSubmit={handleSubmit}>
               <div className="mt-5">Database</div>

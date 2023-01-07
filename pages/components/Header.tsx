@@ -5,7 +5,6 @@ import { FiLogOut } from "react-icons/fi";
 
 export default function Navbar() {
   const { user, isLoading } = useUser();
-
   return (
     <>
       {user && (
@@ -22,7 +21,7 @@ export default function Navbar() {
             </Popover.Trigger>
             <Popover.Content>
               <Text css={{ p: "$8" }}>Username - {user.nickname}</Text>
-              <Text css={{ p:"$8" }}>Full Name - {user.name}</Text>
+              <Text css={{ p: "$8" }}>Full Name - {user.name}</Text>
               <div className=" flex justify-center  text-xl font-bold bg-red-600 text-white px-9 rounded-full py-2 ">
                 {" "}
                 <Link href={"/api/auth/logout"}>
