@@ -49,7 +49,7 @@ export default function Navbar() {
           className=" text-xl text-secondary lg:text-3xl mx-5 mt-[1.2rem]  border-[#D9D9D9] font-bold"
         >
           {" "}
-          optimise
+          optimiser
         </Link>
       </div>
 

@@ -6,6 +6,7 @@
 body {
   font-family: 'Chillax', sans-serif;
   background-color: #000000;
+  background-image: url("../public/stars.jpg");
 }
 
 a {
