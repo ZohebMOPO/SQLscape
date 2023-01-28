@@ -9,7 +9,14 @@ module.exports = {
       colors: {
         secondary: "#0081C9",
         third: "#FFCAC8",
-      }
+      },
+      screens: {
+				sm: "450px",
+		
+				md: "768px",
+		
+				lg: "1350px",
+			  },
     },
   },
   plugins: [],

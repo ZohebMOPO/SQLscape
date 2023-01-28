@@ -6,7 +6,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { format } from "sql-formatter";
 import copy from "copy-to-clipboard";
-import { useUser } from "@auth0/nextjs-auth0/client";
+import { useUser } from '@auth0/nextjs-auth0/client';
 import { BsClipboard } from "react-icons/bs";
 import Link from "next/link";
 
@@ -16,7 +16,7 @@ export default function Home() {
   }
   const [data, setData] = useState<string>();
   const [loading, setLoading] = useState(false);
-  const { user, isLoading } = useUser();
+  const { user, error, isLoading } = useUser();
   const [screenshot, setScreenshot] = useState<Screen>();
 
   const handleSubmit = async (e: React.ChangeEvent<HTMLFormElement>) => {
@@ -86,11 +86,11 @@ export default function Home() {
         )}
         {user && (
           <div>
-            <h1 className="text-3xl font-bold mt-[3rem]  ">
+            <h1 className="lg:text-3xl text-2xl mb-[2rem] font-bold mt-[3rem]  ">
               Describe your <span className="text-secondary ">table</span> and{" "}
               <span className="text-secondary">fields</span>{" "}
             </h1>
-            <div className="float-right w-[50rem]">
+            <div className=" float-left lg:float-right w-[20rem]  lg:w-[50rem]">
               <SyntaxHighlighter
                 language="sql"
                 customStyle={{
@@ -114,7 +114,7 @@ export default function Home() {
                 {" "}
                 <BsClipboard className="inline" />
               </button>
-              {screenshot ? (
+              {/* {screenshot ? (
                 <Link
                   className="bg-blue-500 text-[#FBF1D3] text-lg py-3 mx-5 rounded-md px-2"
                   href={`${screenshot?.data}`}
@@ -128,7 +128,7 @@ export default function Home() {
                 >
                   Screenshot
                 </button>
-              )}
+              )} */}
             </div>
             <form onSubmit={handleSubmit}>
               <div className="mt-5">Database</div>
@@ -140,7 +140,7 @@ export default function Home() {
                 <option value="MySQL">MySQL</option>
                 <option value="MongoDB">MongoDB</option>
               </select>
-              <div className="w-[45rem] mt-[2rem]">
+              <div className="lg:w-[45rem] mt-[2rem]">
                 <Input
                   label="Tables Name"
                   fullWidth
@@ -164,7 +164,7 @@ export default function Home() {
                 What action do you want your{" "}
                 <span className="text-secondary ">query</span> to perform?
               </h1>
-              <div className="w-[45rem] mt-[2rem]">
+              <div className="lg:w-[45rem] mt-[2rem]">
                 <Textarea
                   label="Query instructions"
                   bordered
@@ -175,6 +175,7 @@ export default function Home() {
                   placeholder="Eg- Select all users from the table ."
                   rows={8}
                 />
+                <div className="lg:justify-start flex justify-center">
                 <Button
                   shadow
                   size={"lg"}
@@ -182,13 +183,14 @@ export default function Home() {
                   type="submit"
                   color="secondary"
                   auto
-                >
+                  >
                   {loading ? (
                     <Loading color="currentColor" size="sm" />
-                  ) : (
-                    <div>Give me the query</div>
-                  )}
+                    ) : (
+                      <div>Give me the query</div>
+                      )}
                 </Button>
+                </div>
               </div>
             </form>
           </div>

@@ -36,7 +36,7 @@ export default function Navbar() {
       <div className="float-right mt-5 mx-5">
         <Link
           href={"describe"}
-          className=" text-3xl mx-5 mt-[1.2rem]  border-[#D9D9D9] font-bold"
+          className=" text-xl lg:text-3xl mx-5 mt-[1.2rem]  border-[#D9D9D9] font-bold"
         >
           {" "}
           query describer
@@ -46,7 +46,7 @@ export default function Navbar() {
       <div className="mx-10 flex justify-center">
         <Link
           href={"/"}
-          className="text-secondary mx-5 text-4xl mt-[1rem] font-bold"
+          className="text-secondary mx-5  text-2xl lg:text-4xl mt-[1rem] font-bold"
         >
           SQLscape
         </Link>
