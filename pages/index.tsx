@@ -6,7 +6,7 @@ import SyntaxHighlighter from "react-syntax-highlighter";
 import { atomOneDark } from "react-syntax-highlighter/dist/cjs/styles/hljs";
 import { format } from "sql-formatter";
 import copy from "copy-to-clipboard";
-import { useUser } from '@auth0/nextjs-auth0/client';
+import { useUser } from "@auth0/nextjs-auth0/client";
 import { BsClipboard } from "react-icons/bs";
 import Link from "next/link";
 
@@ -76,7 +76,7 @@ export default function Home() {
             <div className="grid h-screen place-items-center">
               <Link
                 href={"/api/auth/login"}
-                className="bg-blue-500  hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full shadow-lg focus:outline-none focus:shadow-outline"
+                className="bg-secondary border-2 border-secondary text-black  hover:bg-black hover:text-secondary font-bold py-2 px-4 rounded-full shadow-lg focus:outline-none focus:shadow-outline"
                 type="submit"
               >
                 Sign In with Auth0
@@ -86,7 +86,7 @@ export default function Home() {
         )}
         {user && (
           <div>
-            <h1 className="lg:text-3xl text-2xl mb-[2rem] font-bold mt-[3rem]  ">
+            <h1 className="lg:text-3xl text-secondary text-2xl mb-[2rem] font-bold mt-[3rem]  ">
               Describe your <span className="text-secondary ">table</span> and{" "}
               <span className="text-secondary">fields</span>{" "}
             </h1>
@@ -131,7 +131,7 @@ export default function Home() {
               )} */}
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="mt-5">Database</div>
+              <div className="mt-5 text-secondary">Database</div>
               <select
                 name="database"
                 className="md:text-lg text-base resize rounded-md mt-5 mb-2 py-3 md:py-3 px-3 md:px-5 text-black bg-[#FBF1D3] border-2 hover:border-black border-[#D9D9D9]"
@@ -141,55 +141,67 @@ export default function Home() {
                 <option value="MongoDB">MongoDB</option>
               </select>
               <div className="lg:w-[45rem] mt-[2rem]">
+                <a className="text-secondary">Tables Name</a>
                 <Input
-                  label="Tables Name"
                   fullWidth
                   bordered
                   name="tablename"
                   size="xl"
-                  className="my-5  font-custom"
-                  placeholder="Eg :- Comma separated fields: Employee , Department,Salary_Payments"
+                  status="warning"
+                  color="warning"
+                  className="my-5 text-secondary font-custom"
                 />
+                <a className="text-secondary">
+                  *Comma separated fields: Employee , Department,Salary_Payments
+                </a>
+                <br></br>
+                <a className="text-[#facc15]">Fields</a>
                 <Input
-                  label="Fields "
                   fullWidth
+                  status="warning"
                   bordered
                   name="fields"
                   size="xl"
-                  className="my-5 font-custom"
-                  placeholder="Comma separated fields: (id, name, department_id),(id, name, address)"
+                  className="my-5 text-secondary font-custom"
                 />
+                <a className="text-secondary">
+                  *Comma separated fields: (id, name, department_id),(id, name,
+                  address)
+                </a>
               </div>
-              <h1 className="text-3xl font-bold mt-[4rem]  ">
+              <h1 className="text-3xl text-secondary font-bold mt-[4rem]  ">
                 What action do you want your{" "}
                 <span className="text-secondary ">query</span> to perform?
               </h1>
               <div className="lg:w-[45rem] mt-[2rem]">
+                <a className="text-secondary">Query Instructions</a>
                 <Textarea
-                  label="Query instructions"
                   bordered
                   className="my-5"
                   size="xl"
                   fullWidth
+                  status="warning"
                   name="query"
-                  placeholder="Eg- Select all users from the table ."
                   rows={8}
                 />
+                <a className="text-secondary">
+                  Eg- Select all users from the table .
+                </a>
                 <div className="lg:justify-start flex justify-center">
-                <Button
-                  shadow
-                  size={"lg"}
-                  className="my-5"
-                  type="submit"
-                  color="secondary"
-                  auto
+                  <Button
+                    shadow
+                    size={"lg"}
+                    className="my-5"
+                    type="submit"
+                    color="warning"
+                    auto
                   >
-                  {loading ? (
-                    <Loading color="currentColor" size="sm" />
+                    {loading ? (
+                      <Loading color="currentColor" size="sm" />
                     ) : (
                       <div>Give me the query</div>
-                      )}
-                </Button>
+                    )}
+                  </Button>
                 </div>
               </div>
             </form>
