@@ -13,7 +13,7 @@ export default function Navbar() {
             <Popover.Trigger>
               <Avatar
                 text={`${user.name}`}
-                color="success"
+                color="warning"
                 size={"lg"}
                 textColor="white"
                 className=""
@@ -36,10 +36,20 @@ export default function Navbar() {
       <div className="float-right mt-5 mx-5">
         <Link
           href={"describe"}
-          className=" text-xl lg:text-3xl mx-5 mt-[1.2rem]  border-[#D9D9D9] font-bold"
+          className=" text-xl text-secondary lg:text-3xl mx-5 mt-[1.2rem]  border-[#D9D9D9] font-bold"
         >
           {" "}
           query describer
+        </Link>
+      </div>
+
+      <div className="float-right mt-5 mx-5">
+        <Link
+          href={"optimise"}
+          className=" text-xl text-secondary lg:text-3xl mx-5 mt-[1.2rem]  border-[#D9D9D9] font-bold"
+        >
+          {" "}
+          optimise
         </Link>
       </div>
 
