@@ -74,7 +74,6 @@ export default function Optimise() {
           <div className="w-[45rem] mt-[2rem]">
             <a className="text-secondary">Your SQL Query</a>
             <Textarea
-              bordered
               className="my-5"
               size="xl"
               fullWidth

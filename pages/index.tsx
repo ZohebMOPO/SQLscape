@@ -144,11 +144,10 @@ export default function Home() {
                 <a className="text-secondary">Tables Name</a>
                 <Input
                   fullWidth
-                  bordered
                   name="tablename"
                   size="xl"
                   status="warning"
-                  color="warning"
+                  shadow={false}
                   className="my-5 text-secondary font-custom"
                 />
                 <a className="text-secondary">
@@ -159,7 +158,6 @@ export default function Home() {
                 <Input
                   fullWidth
                   status="warning"
-                  bordered
                   name="fields"
                   size="xl"
                   className="my-5 text-secondary font-custom"
@@ -176,7 +174,6 @@ export default function Home() {
               <div className="lg:w-[45rem] mt-[2rem]">
                 <a className="text-secondary">Query Instructions</a>
                 <Textarea
-                  bordered
                   className="my-5"
                   size="xl"
                   fullWidth
