@@ -42,14 +42,15 @@ export default function Describe() {
         />
       </Head>
 
-      <main className="mx-10">
-        <div className="float-right w-[50rem]">
+      <main className="mx-10 max-[1024px]:flex max-[1024px]:flex-col-reverse">
+        <div className="float-right w-[40rem] max-[1024px]:w-auto max-[1024px]:max-w-[40rem]">
           <SyntaxHighlighter
             customStyle={{
               borderRadius: "10px",
               padding: "1rem",
               height: "50rem",
             }}
+            wrapLongLines={true}
             style={atomOneDark}
           >
             {data || "The Explanation will appear here."}
@@ -71,10 +72,9 @@ export default function Describe() {
           <h1 className="text-3xl text-secondary font-bold mt-[4rem]  ">
             Describe my <span className="text-secondary ">query</span> .
           </h1>
-          <div className="w-[45rem] mt-[2rem]">
+          <div className="max-w-[45rem] mt-[2rem] flex flex-col flex-wrap items-start pr-2 ">
             <a className="text-secondary">Your SQL Query</a>
             <Textarea
-              bordered
               className="my-5"
               size="xl"
               fullWidth
@@ -96,7 +96,7 @@ export default function Describe() {
               {loading ? (
                 <Loading color="currentColor" size="sm" />
               ) : (
-                <div>Explain</div>
+                <div className="text-black font-bold">Explain</div>
               )}
             </Button>
           </div>
