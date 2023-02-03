@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <>
-      <div className="flex justify-center items-center h-16 text-secondary">
+      <div className="flex w-full justify-center items-center h-16 text-secondary">
         <p className="text-center">
           Made with ❤️ by{" "}
           <a
