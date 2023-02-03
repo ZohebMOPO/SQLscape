@@ -85,12 +85,10 @@ export default function Home() {
           </div>
         )}
         {user && (
-          <div>
-            <h1 className="lg:text-3xl text-secondary text-2xl mb-[2rem] font-bold mt-[3rem]  ">
-              Describe your <span className="text-secondary ">table</span> and{" "}
-              <span className="text-secondary">fields</span>{" "}
-            </h1>
-            <div className=" float-left lg:float-right w-[20rem]  lg:w-[50rem]">
+          <div className="max-[1024px]:flex max-[1024px]:flex-col-reverse">
+            
+            {/* w-[20rem] */}
+            <div className="float-right w-[40rem] max-[1024px]:w-auto max-[1024px]:max-w-[40rem]">
               <SyntaxHighlighter
                 language="sql"
                 customStyle={{
@@ -98,6 +96,7 @@ export default function Home() {
                   padding: "1rem",
                   height: "50rem",
                 }}
+                wrapLongLines={true}
                 style={atomOneDark}
               >
                 {data || "Your Query Will Appear here."}
@@ -131,7 +130,12 @@ export default function Home() {
               )} */}
             </div>
             <form onSubmit={handleSubmit}>
-              <div className="mt-5 text-secondary">Database</div>
+              <div className="max-w-[40rem] mt-[2rem] flex flex-col flex-wrap items-start pr-2">
+              <h1 className="lg:text-3xl text-secondary text-2xl font-bold mt-[3rem]  ">
+              Describe your <span className="text-secondary ">table</span> and{" "}
+              <span className="text-secondary">fields</span>{" "}
+            </h1>
+              <p className="mt-5 text-secondary">Database</p>
               <select
                 name="database"
                 className="md:text-lg text-base resize rounded-md mt-5 mb-2 py-3 md:py-3 px-3 md:px-5 text-black bg-[#FBF1D3] border-2 hover:border-black border-[#D9D9D9]"
@@ -140,15 +144,14 @@ export default function Home() {
                 <option value="MySQL">MySQL</option>
                 <option value="MongoDB">MongoDB</option>
               </select>
-              <div className="lg:w-[45rem] mt-[2rem]">
+              <div className="mt-[2rem]">
                 <a className="text-secondary">Tables Name</a>
                 <Input
                   fullWidth
-                  bordered
                   name="tablename"
                   size="xl"
                   status="warning"
-                  color="warning"
+                  shadow={false}
                   className="my-5 text-secondary font-custom"
                 />
                 <a className="text-secondary">
@@ -159,7 +162,6 @@ export default function Home() {
                 <Input
                   fullWidth
                   status="warning"
-                  bordered
                   name="fields"
                   size="xl"
                   className="my-5 text-secondary font-custom"
@@ -173,10 +175,9 @@ export default function Home() {
                 What action do you want your{" "}
                 <span className="text-secondary ">query</span> to perform?
               </h1>
-              <div className="lg:w-[45rem] mt-[2rem]">
+              <div className=" mt-[2rem]">
                 <a className="text-secondary">Query Instructions</a>
                 <Textarea
-                  bordered
                   className="my-5"
                   size="xl"
                   fullWidth
@@ -199,10 +200,11 @@ export default function Home() {
                     {loading ? (
                       <Loading color="currentColor" size="sm" />
                     ) : (
-                      <div>Give me the query</div>
+                      <div className="font-bold text-black">Give me the query</div>
                     )}
                   </Button>
                 </div>
+              </div>
               </div>
             </form>
           </div>
